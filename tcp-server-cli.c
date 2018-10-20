@@ -146,6 +146,7 @@ int message_receive(int streamClient, char *msg) {
  * Prend en paramètre :
  *     - streamClient    Numéro du flux du client.
  *     - msg                 Pointeur vers la chaine de caractère à envoyer.
+ * Renvoie 1 si le message à bien été envoyé, 0 sinon.
  *****************************************************************************/
 int message_send(int streamClient, char *msg) {
   int status;
@@ -153,9 +154,9 @@ int message_send(int streamClient, char *msg) {
   status = send(streamClient, msg, MSG_SIZE, 0);
   if ( status == -1 ) {
     perror("Error with send");
+    return 0;
   }
-
-  return status;
+  return 1;
 }
 
 /******************************************************************************
@@ -217,8 +218,8 @@ int main(int argc, char *argv[]) {
     memset(&msg, 0, sizeof(msg));
     while ( message_receive(streamClient, msg) > 0 ) {
       printf(">> %s\n", msg);
-      message_send(streamClient, msg);
-      printf(">> # Same message send.\n");
+      if ( message_send(streamClient, msg) )
+        printf(">> # Same message sent.\n");
       memset(&msg, 0, sizeof(msg));
     }
   }

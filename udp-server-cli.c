@@ -118,15 +118,18 @@ void message_receive(int socketDescriptor, struct addrinfo *servInfo, char *msg)
  *     - servInfo            Pointeur vers les informations récupérées par la
  *                             fonction 'get_info'.
  *     - msg                 Pointeur vers la chaine de caractère à envoyer.
+ * Renvoie 1 si le message à bien été envoyé, 0 sinon.
  *****************************************************************************/
-void message_send(int socketDescriptor, struct addrinfo *servInfo, char *msg) {
+int message_send(int socketDescriptor, struct addrinfo *servInfo, char *msg) {
   int status;
 
   status = sendto(socketDescriptor, msg, strlen(msg), 0,
                   (struct sockaddr *) &servInfo->ai_addr, servInfo->ai_addrlen);
   if ( status == -1 ) {
     perror("Error with sendto");
+    return 0;
   }
+  return 1;
 }
 
 /******************************************************************************
@@ -169,6 +172,8 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
+  printf("\n ****      Welcome to the UDP Server.      ****\n\n");
+
   /* Récupération des informations du serveur */
   servInfo = get_info(argv[1]);
 
@@ -182,10 +187,10 @@ int main(int argc, char *argv[]) {
     memset(msg, 0, sizeof(msg));
     message_receive(socketDescriptor, &servInfo, msg);
     printClient(&servInfo, msg);
-    printf("Message received : %s\n", msg);
+    printf(">> %s\n", msg);
 
-    message_send(socketDescriptor, &servInfo, msg);
-    printf(">> # Same message send.\n");
+    if ( message_send(socketDescriptor, &servInfo, msg) )
+      printf(">> # Same message sent.\n");
   }
 
   socket_close(socketDescriptor);
