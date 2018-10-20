@@ -153,7 +153,7 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  printf("\n ****      Welcome in the program TCP Client.      ****\n\n");
+  printf("\n ****      Welcome to the TCP Client.      ****\n\n");
 
   /* Récupération des informations du serveur */
   servInfo = get_info(argv[1], argv[2]);
@@ -163,15 +163,15 @@ int main(int argc, char *argv[]) {
 
   /* Connexion au serveur */
   client_connect(socketDescriptor, &servInfo);
-  printf("Connected on the server.\n");
+  printf("Connected to the server.\n");
 
   /* Envoie du message */
   message_send(socketDescriptor, &servInfo, argv[3]);
-  printf("Message send : %s\n", argv[3]);
+  printf("Message sent : %s\n", argv[3]);
 
   /* Reception du message envoyé par le serveur echo */
   message_receive(socketDescriptor, msg);
-  printf("Message receive : %s\n", msg);
+  printf("Message received : %s\n", msg);
 
   close(socketDescriptor);
 

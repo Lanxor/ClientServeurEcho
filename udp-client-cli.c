@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  printf("\n ****      Welcome in the program UDP Client.      ****\n\n");
+  printf("\n ****      Welcome to the UDP Client.      ****\n\n");
 
   /* Récupération des informations du serveur */
   servInfo = get_info(argv[1], argv[2]);
@@ -143,11 +143,11 @@ int main(int argc, char *argv[]) {
 
   /* Envoie du message */
   message_send(socketDescriptor, &servInfo, argv[3]);
-  printf("Message send : %s\n", argv[3]);
+  printf("Message sent : %s\n", argv[3]);
 
   /* Reception du message envoyé par le serveur echo */
   message_receive(socketDescriptor, msg);
-  printf("Message receive : %s\n", msg);
+  printf("Message received : %s\n", msg);
 
   socket_close(socketDescriptor);
 

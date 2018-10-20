@@ -147,10 +147,10 @@ int main() {
   char serverPort[PORT_ARRAY_SIZE];
 
 
-  printf("\n ****      Welcome in the program UDP Client.      ****\n\n");
+  printf("\n ****      Welcome to the UDP Client.      ****\n\n");
 
   /* Demande de l'adresse de destination à l'utilisateur */
-  printf("Enter the name server or IP adresse : ");
+  printf("Enter the server name or IP address : ");
   input(serverName, NAME_ARRAY_SIZE);
 
   /* Demande du numéro de port du serveur à l'utilisateur */
@@ -164,24 +164,24 @@ int main() {
 
   printf("\n **** Enter the character '.' to stop the program  ****\n\n");
   /* Demande du message à envoyer au serveur */
-  printf("Put your message : ");
+  printf("Write your message : ");
   input(msg, MSG_SIZE);
 
   while ( strcmp(msg, ".") ) {
     /* Envoie du message */
     message_send(socketDescriptor, &servInfo, msg);
-    printf("Message send : %s\n", msg);
+    printf("Message sent : %s\n", msg);
 
     /* Reception du message envoyé par le serveur echo */
     message_receive(socketDescriptor, msg);
-    printf("Message receive : %s\n\n", msg);
+    printf("Message received : %s\n\n", msg);
 
     /* Demande du message à envoyer au serveur */
-    printf("Put your message : ");
+    printf("Write your message : ");
     input(msg, MSG_SIZE);
   }
 
-  printf("You leave the program.\nGood bye.\n");
+  printf("You are leaving the program, good bye.\n");
 
   socket_close(socketDescriptor);
 

@@ -201,7 +201,7 @@ int main() {
   char serverPort[PORT_ARRAY_SIZE];
 
 
-  printf("\n ****      Welcome in the program TCP Server.      ****\n\n");
+  printf("\n ****      Welcome to the TCP Server.      ****\n\n");
 
   /* Demande du numéro de port du serveur à l'utilisateur */
   printf("Enter port number : ");
@@ -217,7 +217,7 @@ int main() {
 
   /* Traitement de tous message reçu, renvoie au client le message reçu */
   while ( 1 ) {
-    printf("\nWainting to connect on server.\n");
+    printf("\nWaiting to connect to server.\n");
 
     streamClient = client_connect(socketDescriptor, &servInfo);
     printClient(&servInfo);
@@ -227,7 +227,7 @@ int main() {
       printf(">> %s\n", msg);
 
       message_send(streamClient, msg);
-      printf(">> # Same message send.\n");
+      printf(">> # Same message sent.\n");
       memset(&msg, 0, sizeof(msg));
     }
   }

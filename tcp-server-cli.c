@@ -190,6 +190,9 @@ int main(int argc, char *argv[]) {
   int streamClient;
   char msg[MSG_SIZE];
 
+
+  printf("\n ****      Welcome to the TCP Server.      ****\n\n");
+
   /* Vérification des paramètres du programme */
   if ( argc != 2 ) {
     fprintf(stderr, "Usage: %s port\n", argv[0]);
@@ -198,6 +201,7 @@ int main(int argc, char *argv[]) {
 
   /* Récupération des informations du serveur */
   servInfo = get_info(argv[1]);
+
   /* Ouverture du socket */
   socketDescriptor = socket_open(&servInfo);
 
@@ -205,7 +209,7 @@ int main(int argc, char *argv[]) {
 
   /* Traitement de tous message reçu, renvoie au client le message reçu */
   while ( 1 ) {
-    printf("\nWainting to connect on server.\n");
+    printf("\nWainting to connect to server.\n");
 
     streamClient = client_connect(socketDescriptor, &servInfo);
     printClient(&servInfo);

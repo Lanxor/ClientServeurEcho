@@ -145,7 +145,7 @@ void printClient(struct addrinfo *servInfo, char *msg) {
                          servInfo->ai_addrlen, host, NI_MAXHOST, 
                          service, NI_MAXSERV, NI_NUMERICSERV);
   if ( status == 0 ) {
-    printf("Receive %zd bytes from %s:%s\n", strlen(msg)*4, host, service);
+    printf("Received %zd bytes from %s:%s\n", strlen(msg)*4, host, service);
   } else {
     fprintf(stderr, "getnameinfo: %s\n", gai_strerror(status));
   }
@@ -182,10 +182,10 @@ int main(int argc, char *argv[]) {
     memset(msg, 0, sizeof(msg));
     message_receive(socketDescriptor, &servInfo, msg);
     printClient(&servInfo, msg);
-    printf("Message receive : %s\n", msg);
+    printf("Message received : %s\n", msg);
 
     message_send(socketDescriptor, &servInfo, msg);
-    printf("Send the same message.\n");
+    printf(">> # Same message send.\n");
   }
 
   socket_close(socketDescriptor);
