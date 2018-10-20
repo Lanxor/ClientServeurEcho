@@ -65,16 +65,6 @@ $ ./tcp-server-cli port                       # Exécute le programme serveur
 # Exemple d'utilisation
 Voici un exemple d'un client/serveur en mode connecté en ligne de commande.
 
-## Côté client :
-```
-$ ./tcp-client-cli localhost 25555 "Hello world !"
-
- ****      Welcome in the program TCP Client.      ****
-
-Connected on the server.
-Message send : Hello world !
-Message receive : Hello world !
-```
 ## Côté serveur :
 ```
 $ ./tcp-server-cli 25555
@@ -86,4 +76,15 @@ localhost:45364 connected.
 >> # Same message send.
 
 Wainting to connect on server.
+```
+
+## Côté client :
+```
+$ ./tcp-client-cli localhost 25555 "Hello world !"
+
+ ****      Welcome in the program TCP Client.      ****
+
+Connected on the server.
+Message send : Hello world !
+Message receive : Hello world !
 ```
