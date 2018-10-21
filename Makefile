@@ -1,7 +1,7 @@
 C=gcc
 OPT= -W -Wall -pedantic
 
-all: udp udpCLI tcp clean
+all: udp udpCLI tcp tcpCLI clean
 
 udp: udpClient udpServer
 
