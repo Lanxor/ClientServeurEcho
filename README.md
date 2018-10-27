@@ -68,12 +68,15 @@ Voici un exemple d'un client/serveur en mode connecté en ligne de commande.
 ## Côté serveur :
 ```
 $ ./tcp-server-cli 25555
+
+ ****      Welcome to the TCP Client.      ****
+
 Listen on 25555
 
-Wainting to connect on server.
+Wainting to connect to server.
 localhost:45364 connected.
 >> Hello world !
->> # Same message send.
+>> # Same message sent.
 
 Wainting to connect on server.
 ```
@@ -82,9 +85,9 @@ Wainting to connect on server.
 ```
 $ ./tcp-client-cli localhost 25555 "Hello world !"
 
- ****      Welcome in the program TCP Client.      ****
+ ****      Welcome to the TCP Client.      ****
 
-Connected on the server.
-Message send : Hello world !
+Connected to the server.
+Message sent : Hello world !
 Message receive : Hello world !
 ```
